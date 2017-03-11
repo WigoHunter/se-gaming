@@ -1,19 +1,407 @@
 :root {
   --primary: #3498DB;
   --lightGray: #ECF0F1;
+  --gray: #F8F6F6;
+  --yellow: #F1C40F;
 }
 
 body {
-  width: 100%;
-  height: 100vh;
-  background-color: var(--primary);
+  background-color: var(--gray);
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu {
+  position: absolute;
+  z-index: 3;
+  color: white;
+  padding: 0 10%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+
+  & ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & li {
+      margin: 0 10px;
+      font-size: 16px;
+      list-style: none;
+      padding: 0;
+    }
+  }
+}
+
+.cover {
+  width: 100%;
+  height: 700px;
+  position: relative;
+  z-index: 1;
+
+  &.home {
+    height: 500px;
+
+    & .overlay {
+      background: rgba(0,0,0,.8);
+    }
+
+    & .actions input[type='text'] {
+      height: 35px;
+      width: 300px;
+      border: none;
+      outline: 0;
+      box-shadow: 0;
+      padding-left: 10px;
+      margin-top: 10px;
+      box-sizing: border-box;
+      font-size: 20px;
+      background: transparent;
+      color: var(--yellow);
+      border-bottom: 4px solid var(--yellow);
+    }
+  }
+
+  & .overlay {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0, rgba(0,0,0));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & h1 {
+      color: #FFF;
+      font-size: 48px;
+    }
+
+    & .actions {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: -15px;
+
+      & .btn {
+        width: 170px;
+        height: 50px;
+        background-color: color(var(--yellow) a(0.8));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: var(--primary);
+        border-radius: 100px;
+        margin: 0 20px;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background-color: color(var(--yellow) a(1));
+          transform: scale(1.1);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.main {
+  margin: 30px auto;
+  width: 70%;
+  min-height: 700px;
+
+  &.home {
+    width: 1020px;
+
+    & h1 {
+      color: #212121;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    & ul.games {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+
+      & li {
+        width: 300px;
+        height: 300px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        margin: 20px 20px;
+
+        position: relative;
+
+        & .overlay {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(to bottom, transparent 20%, rgba(0,0,0,.9));
+
+          & h2 {
+            color: #FFF;
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+
+            & div {
+              color: var(--yellow);
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    & .left {
+      width: 65%;
+
+      & h2 {
+        margin: 10px 0;
+      }
+
+      & p {
+        color: rgba(0,0,0,.8);
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      & .intro {
+        width: 100%;
+        min-height: 400px;
+        padding: 20px 20px;
+        box-sizing: border-box;
+        background-color: #FFF;
+        box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+      }
+
+      & .author {
+        width: 100%;
+        min-height: 200px;
+        padding: 20px 20px;
+        box-sizing: border-box;
+        background-color: #FFF;
+        box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+        margin-top: 30px;
+      }
+    }
+
+    & .right {
+      width: 30%;
+
+      & h2 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      & .tags {
+        width: 100%;
+        min-height: 300px;
+        background-color: #FFF;
+        box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+        padding: 20px 20px;
+        box-sizing: border-box;
+
+        & ul {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          padding: 0;
+
+          & li {
+            font-size: 16px;
+            border: 1px solid #AAA;
+            list-style: none;
+            padding: 8px 13px;
+            border-radius: 3px;
+            margin: 5px;
+            background-color: color(#AAA a(0.4));
+          }
+        }
+
+        & h3 {
+          margin: 0;
+        }
+
+        & input[type='text'] {
+          margin-top: 15px;
+          height: 25px;
+          width: 80%;
+        }
+      }
+
+      & .sys {
+        width: 100%;
+        min-height: 200px;
+        margin-top: 30px;
+        background-color: #FFF;
+        box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+        padding: 20px 20px;
+        box-sizing: border-box;
+
+        & p {
+          font-size: 16px;
+          color: rgba(0,0,0,.6);
+          margin: 5px 0;
+        }
+      }
+
+      & .suggest {
+        width: 100%;
+        min-height: 170px;
+        margin-top: 30px;
+        background-color: #FFF;
+        box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+        padding: 20px 20px;
+        box-sizing: border-box;
+
+        & ul {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          padding: 0;
+          flex-wrap: wrap;
+
+          & li {
+            width: 80px;
+            height: 80px;
+            margin: 5px;
+            list-style: none;
+
+            &:first-child {
+              background-image: url('https://img.clipartfox.com/2f525c196fc017c18c0b800a63b95d97_dota-2-logo-dota-logo-clipart_1423-1423.jpeg');
+              background-size: cover;
+            }
+
+            &:nth-child(2) {
+              background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAUWfEAkQWiWuyjLtAZyDWUxpzHuNC3OiJI5Ed4RwrkyC308i7');
+              background-size: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.art {
+  height: 400px;
+  width: 100%;
+  margin: 80px 0 60px;
+  position: relative;
+
+  & .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+  }
+}
+
+#checkout {
+  margin: 0 auto;
+  width: 70%;
+  min-height: 450px;
+  background-color: #FFF;
+  box-sizing: border-box;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.3);
+  padding: 20px;
+  padding-bottom: 40px;
+
+  & h2 {
+    margin: 10px 0;
+  }
+
+  & label {
+    display: block;
+    margin: 20px 0;
+    font-size: 18px;
+
+    & input[type='text'],
+    & input[type='password'],
+    & select {
+      padding: 5px 7px;
+      display: block;
+      margin-top: 5px;
+      height: 25px;
+      font-size: 16px;
+      width: 40%;
+    }
+
+    & input[type='submit'] {
+      font-size: 18px;
+    }
+
+    & select {
+      width: calc(40% + 16px);
+    }
+  }
+
+  & input[type='submit'] {
+    margin: 20px 0 10px;
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    background-color: var(--yellow);
+    border: none;
+    outline: 0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+.footer {
+  height: 45px;
+  width: 100%;
+  background-color: var(--yellow);
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
   justify-content: center;
 
-  & h1 {
-    color: var(--lightGray);
-    cursor: pointer;
+  &.home {
+    background: var(--primary);
+
+    & p {
+      color: var(--yellow);
+    }
+  }
+
+  & p {
+    color: var(--primary);
+  }
+}
+
+.cover.download {
+  height: 100vh;
+
+  & p {
+    color: var(--yellow);
+    font-size: 22px;
+    margin: 0;
   }
 }
